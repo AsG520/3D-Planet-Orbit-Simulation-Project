@@ -79,7 +79,7 @@ def update():
 # Update Function 
 update()
 
-# Camera (color, scale, position, texture, shader)
+# Camera
 camera = EditorCamera()
 
 # Sun (color, scale, position, texture, shader)       
