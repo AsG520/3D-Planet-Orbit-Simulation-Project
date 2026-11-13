@@ -73,36 +73,9 @@ class Planet:
             # Scale Z
             scale_z = self.scale_z
         ) 
-
-# Keyboard Movement        
-# Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
-def update():
-    # Conditional 'd' Key
-    if (held_keys['d']):
-        # 0.5 Right
-        camera.position += Vec3(0.5, 0, 0)
         
-    # Conditional 'w' Key
-    elif (held_keys['w']):
-        # 0.5 Forward
-        camera.position += Vec3(0, 0, 0.5)
-        
-    # Conditional 's' Key
-    elif (held_keys['s']):
-        # 0.5 Backward
-        camera.position += Vec3(0, 0, -0.5)
-        
-    # Conditional 'a' Key
-    elif (held_keys['a']):
-        # 0.5 Left
-        camera.position += Vec3(-0.5, 0, 0)  
-        
-    # Conditional 'r' Key 
-    elif (held_keys['r']):
-        # Origin Position 
-        camera.position = Vec3(0, 0, 0)
-        # Origin Rotation
-        camera.rotation = Vec3(0, 0, 0)
+# Time
+t = 0
 
 # Sun (color, scale, position, texture, shader)       
 sun = Planet(color.white, 15, (0, 0, 0), load_texture('sun.png'), lit_with_shadows_shader)
@@ -139,6 +112,36 @@ uranus.getPlanet()
 # Neptune (color, scale, position, texture, shader)
 neptune = Planet(color.white, 6.5, (160, 0, 0), load_texture('neptune.png'),  unlit_shader)
 neptune.getPlanet()
+
+# Keyboard Movement        
+# Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
+def update():
+    # Conditional 'd' Key
+    if (held_keys['d']):
+        # 0.5 Right
+        camera.position += Vec3(0.5, 0, 0)
+        
+    # Conditional 'w' Key
+    elif (held_keys['w']):
+        # 0.5 Forward
+        camera.position += Vec3(0, 0, 0.5)
+        
+    # Conditional 's' Key
+    elif (held_keys['s']):
+        # 0.5 Backward
+        camera.position += Vec3(0, 0, -0.5)
+        
+    # Conditional 'a' Key
+    elif (held_keys['a']):
+        # 0.5 Left
+        camera.position += Vec3(-0.5, 0, 0)  
+        
+    # Conditional 'r' Key 
+    elif (held_keys['r']):
+        # Origin Position 
+        camera.position = Vec3(0, 0, 0)
+        # Origin Rotation
+        camera.rotation = Vec3(0, 0, 0)
 
 # Update Function 
 update()
