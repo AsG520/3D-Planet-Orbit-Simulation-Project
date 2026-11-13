@@ -124,6 +124,14 @@ pluto.getPlanet()
 # Saturn Rings
 saturn_rings = Entity(model = 'quad', texture = load_texture('saturns_ring.png'), scale = (22, 22), thickness = 10, rotation = Vec3(297, 90, 97.77), double_sided = True)
 
+# Grid
+grid = Entity(
+    model = Grid(100, 200),
+    scale = 350,
+    position = Vec3(5, -5, 0),
+    rotation = Vec3(90, 0, 0),
+)
+
 # Keyboard Movement        
 # Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
 def update():
