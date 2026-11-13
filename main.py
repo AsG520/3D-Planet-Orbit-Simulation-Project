@@ -29,36 +29,48 @@ window.color = color.black
 # Planet Class
 class Planet:
     # Customizer Constructor
-    def __init__(self, color, scale, position, texture, shader):
+    def __init__(self, color, scale_x, scale_y, scale_z, position, texture, shader, rotation = Vec3(0, 0, 0)):
         # Color
         self.color = color 
-        # Scale
-        self.scale = scale
+        # Scale X
+        self.scale_x = scale_x
+        # Scale Y
+        self.scale_y = scale_y
+        # Scale Z
+        self.scale_z = scale_z
         # Position (x, y, z)
         self.position = position
-        # Reference/Citation: https://www.youtube.com/watch?v=jD7cdr6-b34&t=3s
         # Shader
+        #Reference/Citation: https://www.youtube.com/watch?v=jD7cdr6-b34&t=3s
         self.shader = shader
         # Texture
         self.texture = texture
+        # Rotation
+        self.rotation = rotation
            
     # Accessor
     def getPlanet(self):
         # Entity 
-        planet = Entity(
+        self.planet = Entity(
             # Model
             model = "sphere",
             # Color
             color = self.color,
-            # Scale
-            scale = self.scale,
             # Position (x, y, z)
             position = self.position,
             # Shader
             shader = self.shader,
             # Texture
             texture = self.texture,
-        )
+            # Rotation
+            rotation = self.rotation,
+            # Scale X
+            scale_x = self.scale_x,
+            # Scale Y
+            scale_y = self.scale_y,
+            # Scale Z
+            scale_z = self.scale_z
+        ) 
 
 # Keyboard Movement        
 # Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
@@ -89,12 +101,6 @@ def update():
         camera.position = Vec3(0, 0, 0)
         # Origin Rotation
         camera.rotation = Vec3(0, 0, 0)
-
-# Update Function 
-update()
-
-# Camera
-camera = EditorCamera()
 
 # Sun (color, scale, position, texture, shader)       
 sun = Planet(color.white, 15, (0, 0, 0), load_texture('sun.png'), lit_with_shadows_shader)
@@ -131,6 +137,12 @@ uranus.getPlanet()
 # Neptune (color, scale, position, texture, shader)
 neptune = Planet(color.white, 6.5, (160, 0, 0), load_texture('neptune.png'),  unlit_shader)
 neptune.getPlanet()
+
+# Update Function 
+update()
+
+# Camera
+camera = EditorCamera()
 
 # Launch Application
 app.run()
