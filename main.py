@@ -30,7 +30,7 @@ window.color = color.black
 
 # Planet Class
 class Planet:
-    # Customizer Constructor
+    # Customize Constructor
     def __init__(self, color, scale_x, scale_y, scale_z, position, texture, shader, rotation = Vec3(0, 0, 0)):
         # Color
         self.color = color 
