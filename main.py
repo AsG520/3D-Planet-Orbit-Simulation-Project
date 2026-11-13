@@ -1,6 +1,8 @@
 # Import Packages
 from ursina import color, Entity, Ursina, window, EditorCamera, camera, Vec3, held_keys, load_texture
 from ursina.shaders import lit_with_shadows_shader, unlit_shader
+# Math Import
+import math
 
 # Reference/Citation: https://www.youtube.com/watch?v=w2gu9Ah95l0&list=PLgQYnHnDxgtg-I3m01mGc5wfJwqpT9S3i
 # Ursina Engine
