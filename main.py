@@ -4,7 +4,21 @@ from ursina.shaders import lit_with_shadows_shader, unlit_shader
 
 # Reference/Citation: https://www.youtube.com/watch?v=w2gu9Ah95l0&list=PLgQYnHnDxgtg-I3m01mGc5wfJwqpT9S3i
 # Ursina Engine
-app = Ursina()
+app = Ursina(title='3D Planet Orbit Simulation')
+
+# Reference/Citation: https://www.youtube.com/watch?v=pDTdZGxlkLo
+# Window Border
+window.borderless = True
+# Window Exit Button
+window.exit_button.enabled = True
+# Window Cog Button
+window.cog_button.enabled = True
+# Window Cog Button Color
+window.cog_button.color = color.white
+# Window Entity Counter
+window.entity_counter.enabled = False
+# Window Collider Counter
+window.collider_counter.enabled = False
 
 # Window Dimensions
 window.size = (800, 600)
@@ -22,8 +36,8 @@ class Planet:
         self.scale = scale
         # Position (x, y, z)
         self.position = position
+        # Reference/Citation: https://www.youtube.com/watch?v=jD7cdr6-b34&t=3s
         # Shader
-        #Reference/Citation: https://www.youtube.com/watch?v=jD7cdr6-b34&t=3s
         self.shader = shader
         # Texture
         self.texture = texture
