@@ -77,41 +77,48 @@ class Planet:
 # Time
 t = 0
 
-# Sun (color, scale, position, texture, shader)       
-sun = Planet(color.white, 15, (0, 0, 0), load_texture('sun.png'), lit_with_shadows_shader)
+# Sun        
+sun = Planet(color.white, 15, 15, 15, (0, 0, 0), load_texture('sun.png'), lit_with_shadows_shader, rotation = Vec3(0, 0, 7.25))
 sun.getPlanet()
-
-# Mercury (color, scale, position, texture, shader) 
-mercury = Planet(color.white, 3, (20, 0, 0), load_texture('mercury.png'),  unlit_shader)
+    
+# Mercury   
+mercury = Planet(color.white, 3, 3, 3, (20, 0, 0), load_texture('mercury.png'), unlit_shader, rotation = Vec3(0, 0, 0.034))
 mercury.getPlanet()
 
-# Venus (color, scale, position, texture, shader)
-venus = Planet(color.white, 4, (40, 0, 0), load_texture('venus.png'), unlit_shader)
+# Venus
+venus = Planet(color.white, 4, 4, 4, (40, 0, 0), load_texture('venus.png'), unlit_shader,rotation = Vec3(0, 0, 177.4))
 venus.getPlanet()
 
-# Earth (color, scale, position, texture, shader)
-earth = Planet(color.white, 5, (60, 0, 0), load_texture('earth.png'),  unlit_shader)
+# Earth
+earth = Planet(color.white, 5, 5, 5, (60, 0, 0), load_texture('earth.png'),  unlit_shader, rotation = Vec3(0, 0, 23.4))
 earth.getPlanet()
 
-# Mars (color, scale, position, texture, shader)
-mars = Planet(color.white, 4.5, (80, 0, 0), load_texture('mars.png'),  unlit_shader)
+# Mars
+mars = Planet(color.white, 4.5, 4.5, 4.5, (80, 0, 0), load_texture('mars.png'),  unlit_shader, rotation = Vec3(0, 0, 25.19))
 mars.getPlanet()
 
-# Jupiter (color, scale, position, texture, shader)
-jupiter = Planet(color.white, 8, (100, 0, 0), load_texture('jupiter.png'),  unlit_shader)
+# Jupiter
+jupiter = Planet(color.white, 8, 8, 8, (100, 0, 0), load_texture('jupiter.png'),  unlit_shader, rotation = Vec3(0, 0, 3.13))
 jupiter.getPlanet()
 
-# Saturn (color, scale, position, texture, shader)
-saturn = Planet(color.white, 7, (120, 0, 0), load_texture('saturn.png'),  unlit_shader)
+# Saturn
+saturn = Planet(color.white, 7, 7 , 7, (120, 0, 0), load_texture('saturn.png'),  unlit_shader, rotation = Vec3(0, 0, 26.73))
 saturn.getPlanet()
 
-# Uranus (color, scale, position, texture, shader)
-uranus = Planet(color.white, 6, (140, 0, 0), load_texture('uranus.png'),  unlit_shader)
+# Uranus
+uranus = Planet(color.white, 6, 6, 6, (140, 0, 0), load_texture('uranus.png'),  unlit_shader, rotation = Vec3(0, 0, 97.77))
 uranus.getPlanet()
 
-# Neptune (color, scale, position, texture, shader)
-neptune = Planet(color.white, 6.5, (160, 0, 0), load_texture('neptune.png'),  unlit_shader)
+# Neptune
+neptune = Planet(color.white, 6.5, 6.5, 6.5, (160, 0, 0), load_texture('neptune.png'),  unlit_shader, rotation = Vec3(0, 0, 28.32))
 neptune.getPlanet()
+
+# Pluto
+pluto = Planet(color.white, 2, 2, 2, (180, 0, 0), load_texture('pluto.png'),  unlit_shader, rotation = Vec3(0, 0, 120))
+pluto.getPlanet()
+
+# Saturn Rings
+saturn_rings = Entity(model = 'quad', texture = load_texture('saturns_ring.png'), scale = (22, 22), thickness = 10, rotation = Vec3(297, 90, 97.77), double_sided = True)
 
 # Keyboard Movement        
 # Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
