@@ -77,6 +77,10 @@ class Planet:
 # Time
 t = 0
 
+# Moon
+moon = Planet(color.white, 1, 1, 1, (65, 0, 0), load_texture('moon.png'), unlit_shader, rotation = Vec3(0, 0, 6.68))
+moon.getPlanet()
+
 # Sun        
 sun = Planet(color.white, 15, 15, 15, (0, 0, 0), load_texture('sun.png'), lit_with_shadows_shader, rotation = Vec3(0, 0, 7.25))
 sun.getPlanet()
