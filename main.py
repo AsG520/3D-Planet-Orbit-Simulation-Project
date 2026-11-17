@@ -332,6 +332,13 @@ def update():
         # Origin Rotation
         camera.rotation = Vec3(0, 0, 0)
 
+def input(key):
+    if key == 'escape':
+        for e in trail_renderers:
+            e.enabled = not e.enabled
+    elif key == 'space':
+        a = Audio('space_sound', pitch = random.uniform(0.5, 1), loop = True)
+
 # Update Function 
 update()
 
