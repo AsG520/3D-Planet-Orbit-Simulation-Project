@@ -302,35 +302,340 @@ grid = Entity(
     rotation = Vec3(90, 0, 0),
 )
 
-# Keyboard Movement        
-# Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
+# Update Function
 def update():
-    # Conditional 'd' Key
-    if (held_keys['d']):
-        # 0.5 Right
-        camera.position += Vec3(0.5, 0, 0)
+    # Time Variable
+    global t
+    # Increment Time
+    t += 0.01
+
+    # Relative Sun
+    sun.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = sun.planet)
+    
+    # Rotation Radius Moon
+    radius_moon = 8
+    # Relative Moon 
+    moon.planet.rotate(Vec3(0, 0, 6.68) * -2, relative_to = moon.planet)
+    # Rotate Moon X
+    moon.planet.x = math.cos(t / 0.0748) * radius_moon + earth.planet.x
+    # Rotate Moon Z
+    moon.planet.z = math.sin(t / 0.0748) * radius_moon + earth.planet.z
+    
+    # Relative Jupiter Rings
+    jupiter_rings.rotate(Vec3(0, 0, 1) * 2, relative_to = jupiter_rings)
+    # Rotate Jupiter Rings X
+    jupiter_rings.x = jupiter.planet.x
+    # Rotate Jupiter Rings Z 
+    jupiter_rings.z = jupiter.planet.z
+    
+    # Relative Uranus Rings
+    uranus_rings.rotate(Vec3(0, 0, 1) * -2, relative_to = uranus_rings)
+    # Rotate Uranus Rings X
+    uranus_rings.x = uranus.planet.x
+    # Rotate Uranus Rings Z
+    uranus_rings.z = uranus.planet.z
+    
+    # Relative Neptune Rings
+    neptune_rings.rotate(Vec3(0, 0, 1) * 2, relative_to = neptune_rings)
+    # Rotate Neptune Rings X
+    neptune_rings.x = neptune.planet.x
+    # Rotate Neptune Rings Z
+    neptune_rings.z = neptune.planet.z
         
-    # Conditional 'w' Key
-    elif (held_keys['w']):
-        # 0.5 Forward
-        camera.position += Vec3(0, 0, 0.5)
-        
-    # Conditional 's' Key
-    elif (held_keys['s']):
-        # 0.5 Backward
-        camera.position += Vec3(0, 0, -0.5)
-        
-    # Conditional 'a' Key
-    elif (held_keys['a']):
-        # 0.5 Left
-        camera.position += Vec3(-0.5, 0, 0)  
-        
-    # Conditional 'r' Key 
-    elif (held_keys['r']):
-        # Origin Position 
-        camera.position = Vec3(0, 0, 0)
-        # Origin Rotation
-        camera.rotation = Vec3(0, 0, 0)
+    # Rotation Radius Mercury
+    radius_mercury = 20
+    # Rotate Mercury X
+    mercury.planet.x = math.cos(t / 0.24) * radius_mercury
+    # Rotate Mercury Z
+    mercury.planet.z = math.sin(t / 0.24) * radius_mercury
+    # Relative Mercury
+    mercury.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = mercury.planet)
+    
+    # Rotation Radius Venus
+    radius_venus = 40
+    # Rotate Venus X
+    venus.planet.x = math.cos(t / 0.62) * radius_venus
+    # Rotate Venus Z
+    venus.planet.z = math.sin(t / 0.62) * radius_venus
+    # Relative Venus
+    venus.planet.rotate(Vec3(0, 1, 0) * 2, relative_to = venus.planet)
+    
+    # Rotation Radius Earth 
+    radius_earth = 60
+    # Rotate Venus X
+    earth.planet.x = math.cos(t) * radius_earth
+    # Rotate Venus Z
+    earth.planet.z = math.sin(t) * radius_earth
+    # Relative Earth
+    earth.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = earth.planet)
+      
+    # Rotation Radius Mars
+    radius_mars = 80
+    # Rotate Mars X
+    mars.planet.x = math.cos(t / 1.88) * radius_mars
+    # Rotate Mars Z
+    mars.planet.z = math.sin(t / 1.88) * radius_mars
+    # Relative Mars
+    mars.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = mars.planet)
+    
+     # Rotation Radius Phobos
+    radius_phobos = 4
+    # Rotate Phobos X
+    phobos.planet.x = math.cos(t / 0.087) * radius_phobos + mars.planet.x
+    # Rotate Phobos Z
+    phobos.planet.z = math.sin(t / 0.087) * radius_phobos + mars.planet.z
+    # Relative Phobos
+    phobos.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = phobos.planet)
+    
+     # Rotation Radius Deimos
+    radius_deimos = 8
+    # Rotate Deimos X
+    deimos.planet.x = math.cos(t /  0.346) * radius_deimos + mars.planet.x
+    # Rotate Deimos Z
+    deimos.planet.z = math.sin(t /  0.346) * radius_deimos + mars.planet.z
+    # Relative Deimos
+    deimos.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = deimos.planet)
+    
+    # Rotation Radius Jupiter
+    radius_jupiter = 100
+    # Rotate Jupiter X
+    jupiter.planet.x = math.cos(t / 11.86) * radius_jupiter
+    # Rotate Jupiter Z
+    jupiter.planet.z = math.sin(t / 11.86) * radius_jupiter
+    # Relative Jupiter
+    jupiter.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = jupiter.planet)
+    
+    # Rotation Radius Amalthea
+    radius_amalthea = 4.5
+    # Rotate Amalthea X
+    amalthea.planet.x = math.cos(t / 0.498) * radius_amalthea + jupiter.planet.x
+    # Rotate Amalthea Z
+    amalthea.planet.z = math.sin(t / 0.498) * radius_amalthea + jupiter.planet.z
+    # Relative Amalthea
+    amalthea.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=jupiter.planet)
+
+    # Rotation Radius Io
+    radius_io = 6
+    # Rotate Io X
+    io.planet.x = math.cos(t / 1.769) * radius_io + jupiter.planet.x
+    # Rotate Io Z
+    io.planet.z = math.sin(t / 1.769) * radius_io + jupiter.planet.z
+    # Relative Io
+    io.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=jupiter.planet)
+
+    # Rotation Radius Europa
+    radius_europa = 8
+    # Rotate Europa X
+    europa.planet.x = math.cos(t / 3.551) * radius_europa + jupiter.planet.x
+    # Rotate Europa Z
+    europa.planet.z = math.sin(t / 3.551) * radius_europa + jupiter.planet.z
+    # Relative Europa
+    europa.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=jupiter.planet)
+
+    # Rotation Radius Ganymede
+    radius_ganymede = 11
+    # Rotate Ganymede X
+    ganymede.planet.x = math.cos(t / 7.155) * radius_ganymede + jupiter.planet.x
+    # Rotate Ganymede Z
+    ganymede.planet.z = math.sin(t / 7.155) * radius_ganymede + jupiter.planet.z
+    # Relative Ganymede
+    ganymede.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=jupiter.planet)
+
+    # Rotation Radius Callisto
+    radius_callisto = 12
+    # Rotate Callisto X
+    callisto.planet.x = math.cos(t / 16.689) * radius_callisto + jupiter.planet.x
+    # Rotate Callisto Z
+    callisto.planet.z = math.sin(t / 16.689) * radius_callisto + jupiter.planet.z
+    # Relative Callisto
+    callisto.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=jupiter.planet)
+
+    # Rotation Radius Himalia
+    radius_himalia = 35
+    # Rotate Himalia X
+    himalia.planet.x = math.cos(t / 250.566) * radius_himalia + jupiter.planet.x
+    # Rotate Himalia Z
+    himalia.planet.z = math.sin(t / 250.566) * radius_himalia + jupiter.planet.z
+    # Relative Himalia
+    himalia.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=jupiter.planet)
+
+    # Rotation Radius Saturn
+    radius_saturn = 120
+    # Rotate Saturn X
+    saturn.planet.x = math.cos(t / 29.46) * radius_saturn
+    # Rotate Saturn Z
+    saturn.planet.z = math.sin(t / 29.46) * radius_saturn
+    # Relative Saturn
+    saturn.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
+
+    # Relative Saturn Rings
+    saturn_rings.rotate(Vec3(0, 0, 1) * 2, relative_to = saturn_rings)
+    # Rotate Saturn Rings X
+    saturn_rings.x = saturn.planet.x
+    # Rotate Saturn Rings Z
+    saturn_rings.z = saturn.planet.z
+    
+    # Rotation Radius Mimas
+    radius_mimas = 4
+    # Rotate Mimas X
+    mimas.planet.x = math.cos(t / 0.94) * radius_mimas + saturn.planet.x
+    # Rotate Mimas Z
+    mimas.planet.z = math.sin(t / 0.94) * radius_mimas + saturn.planet.z
+    # Relative Mimas
+    mimas.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Enceladus
+    radius_enceladus = 4.5
+    # Rotate Enceladus X
+    enceladus.planet.x = math.cos(t / 1.37) * radius_enceladus + saturn.planet.x
+    # Rotate Enceladus Z
+    enceladus.planet.z = math.sin(t / 1.37) * radius_enceladus + saturn.planet.z
+    # Relative Enceladus
+    enceladus.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Tethys
+    radius_tethys = 5.5
+    # Rotate Tethys X
+    tethys.planet.x = math.cos(t / 1.89) * radius_tethys + saturn.planet.x
+    # Rotate Tethys Z
+    tethys.planet.z = math.sin(t / 1.89) * radius_tethys + saturn.planet.z
+    # Relative Tethys
+    tethys.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Dione
+    radius_dione = 6.5
+    # Rotate Dione X
+    dione.planet.x = math.cos(t / 2.74) * radius_dione + saturn.planet.x
+    # Rotate Dione Z
+    dione.planet.z = math.sin(t / 2.74) * radius_dione + saturn.planet.z
+    # Relative Dione
+    dione.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Rhea
+    radius_rhea = 9
+    # Rotate Rhea X
+    rhea.planet.x = math.cos(t / 4.52) * radius_rhea + saturn.planet.x
+    # Rotate Rhea Z
+    rhea.planet.z = math.sin(t / 4.52) * radius_rhea + saturn.planet.z
+    # Relative Rhea
+    rhea.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Titan
+    radius_titan = 10
+    # Rotate Titan X
+    titan.planet.x = math.cos(t / 15.95) * radius_titan + saturn.planet.x
+    # Rotate Titan Z
+    titan.planet.z = math.sin(t / 15.95) * radius_titan + saturn.planet.z
+    # Relative Titan
+    titan.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Hyperion
+    radius_hyperion = 12.03
+    # Rotate Hyperion X
+    hyperion.planet.x = math.cos(t / 21.28) * radius_hyperion + saturn.planet.x
+    # Rotate Hyperion Z
+    hyperion.planet.z = math.sin(t / 21.28) * radius_hyperion + saturn.planet.z
+    # Relative Hyperion
+    hyperion.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Iapetus
+    radius_iapetus = 28.95
+    # Rotate Iapetus X
+    iapetus.planet.x = math.cos(t / 79.33) * radius_iapetus + saturn.planet.x
+    # Rotate Iapetus Z
+    iapetus.planet.z = math.sin(t / 79.33) * radius_iapetus + saturn.planet.z
+    # Relative Iapetus
+    iapetus.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=saturn.planet)
+
+    # Rotation Radius Uranus
+    radius_uranus = 140
+    # Rotate Uranus X
+    uranus.planet.x = math.cos(t / 84.01) * radius_uranus
+    # Rotate Uranus Z
+    uranus.planet.z = math.sin(t / 84.01) * radius_uranus
+    # Relative Uranus
+    uranus.planet.rotate(Vec3(0, 1, 0) * 2, relative_to = uranus.planet)
+    
+    # Rotation Radius Ariel
+    radius_ariel = 6
+    # Rotate Ariel X
+    ariel.planet.x = math.cos(t / 2.520379) * radius_ariel + uranus.planet.x
+    # Rotate Ariel Z
+    ariel.planet.z = math.sin(t / 2.520379) * radius_ariel + uranus.planet.z
+    # Relative Ariel
+    ariel.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=uranus.planet)
+
+    # Rotation Radius Umbriel
+    radius_umbriel = 8
+    # Rotate Umbriel X
+    umbriel.planet.x = math.cos(t / 4.144176) * radius_umbriel + uranus.planet.x
+    # Rotate Umbriel Z
+    umbriel.planet.z = math.sin(t / 4.144176) * radius_umbriel + uranus.planet.z
+    # Relative Umbriel
+    umbriel.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=uranus.planet)
+
+    # Rotation Radius Titania
+    radius_titania = 11
+    # Rotate Titania X
+    titania.planet.x = math.cos(t / 8.705867) * radius_titania + uranus.planet.x
+    # Rotate Titania Z
+    titania.planet.z = math.sin(t / 8.705867) * radius_titania + uranus.planet.z
+    # Relative Titania
+    titania.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=uranus.planet)
+
+    # Rotation Radius Oberon
+    radius_oberon = 14.5
+    # Rotate Oberon X
+    oberon.planet.x = math.cos(t / 13.463234) * radius_oberon + uranus.planet.x
+    # Rotate Oberon Z
+    oberon.planet.z = math.sin(t / 13.463234) * radius_oberon + uranus.planet.z
+    # Relative Oberon
+    oberon.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=uranus.planet)
+    
+    # Rotation Radius Neptune
+    radius_neptune = 150
+    # Rotate Neptune X
+    neptune.planet.x = math.cos(t / 164.8) * radius_neptune
+    # Rotate Neptune Z
+    neptune.planet.z = math.sin(t / 164.8) * radius_neptune
+    # Relative Neptune
+    neptune.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = neptune.planet)
+    
+    # Rotation Radius Proteus
+    radius_proteus = 5
+    # Rotate Proteus X
+    proteus.planet.x = math.cos(t / 1.122315) * radius_proteus + neptune.planet.x
+    # Rotate Proteus Z
+    proteus.planet.z = math.sin(t / 1.122315) * radius_proteus + neptune.planet.z
+    # Relative Proteus
+    proteus.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=neptune.planet)
+
+    # Rotation Radius Triton
+    radius_triton = 9
+    # Rotate Triton X
+    triton.planet.x = math.cos(t / -5.876854) * radius_triton + neptune.planet.x
+    # Rotate Triton Z
+    triton.planet.z = math.sin(t / -5.876854) * radius_triton + neptune.planet.z
+    # Relative Triton
+    triton.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=neptune.planet)
+
+    # Rotation Radius Nereid
+    radius_nereid = 35
+    # Rotate Nereid X
+    nereid.planet.x = math.cos(t / 360.13619) * radius_nereid - 26.3 + neptune.planet.x
+    # Rotate Nereid Z
+    nereid.planet.z = math.sin(t / 360.13619) * 23.1 + neptune.planet.z
+    # Relative Nereid
+    nereid.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=neptune.planet)
+    
+    # Rotation Radius Pluto
+    radius_pluto = 180
+    # Rotate Pluto X
+    pluto.planet.x = math.cos(t / 248.0) * radius_pluto
+    # Rotate Pluto Z
+    pluto.planet.z = math.sin(t / 248.0) * radius_pluto
+    # Relative Pluto
+    pluto.planet.rotate(Vec3(0, 1, 0) * 2, relative_to = pluto.planet)
 
 def input(key):
     if key == 'escape':
