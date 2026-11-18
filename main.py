@@ -1,5 +1,5 @@
 # Ursina Import
-from ursina import color, Entity, Ursina, window, EditorCamera, camera, Vec3, held_keys, load_texture, Grid, Text, Audio
+from ursina import color, Entity, Ursina, window, EditorCamera, camera, Vec3, held_keys, load_texture, Grid, Text, mouse, Audio
 # Shader Import
 from ursina.shaders import lit_with_shadows_shader, unlit_shader
 # TrailRenderer Import
