@@ -31,6 +31,7 @@ window.size = (800, 600)
 # Window Background Color
 window.color = color.black
 
+# Reference/Citation: https://docs.python.org/3/tutorial/classes.html
 # Planet Class
 class Planet:
     # Customize Constructor
@@ -79,9 +80,11 @@ class Planet:
 
 # Reference/Citation of Text: https://www.ursinaengine.org/api_reference.html#Text
 
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#Audio
 # Initializing Audio
 a = Audio('space_sound', loop = True, autoplay = True)
 
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#TrailRenderer
 # Trail Renderer List
 trail_renderers = []
 
@@ -292,6 +295,7 @@ uranus_rings = Entity(model = 'quad', texture = load_texture('uranus_rings.png')
 # Neptune Rings
 neptune_rings = Entity(model = 'quad', texture = load_texture('neptune_rings.png'), scale = (10, 10), thickness = 10, rotation = Vec3(299, 90, 97.77), double_sided = True)
 
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#Grid
 # Grid
 grid = Entity(
     model = Grid(100, 200),
@@ -689,9 +693,11 @@ def update():
 
     # Conditional 'mouse' Key
     elif (mouse.moving == True):
+        # Reference/Citation: https://www.ursinaengine.org/api_reference.html#mouse
         # Delta Mouse Movement 
         camera.rotation += Vec3(mouse.delta.y * 0.1, mouse.delta.x * 0.1, 0)
 
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#input_handler
 # Input Function
 def input(key):
     # Conditional 'escape' Key
@@ -712,6 +718,7 @@ def input(key):
 # Call Update Function 
 update()
 
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#EditorCamera
 # Camera
 camera = EditorCamera()
 
