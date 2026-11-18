@@ -26,10 +26,8 @@ window.cog_button.color = color.white
 window.entity_counter.enabled = False
 # Window Collider Counter
 window.collider_counter.enabled = False
-
 # Window Dimensions
 window.size = (800, 600)
-
 # Window Background Color
 window.color = color.black
 
@@ -694,11 +692,17 @@ def update():
         # Delta Mouse Movement 
         camera.rotation += Vec3(mouse.delta.y * 0.1, mouse.delta.x * 0.1, 0)
 
+# Input Function
 def input(key):
+    # Conditional 'escape' Key
     if key == 'escape':
+        # Iterate in Trail Renderers List
         for e in trail_renderers:
+            # Disable Trails
             e.enabled = not e.enabled
+    # Conditional 'space' Key
     elif key == 'space':
+        # Mute Audio
         a = Audio('space_sound', pitch = random.uniform(0.5, 1), loop = True)
 
 # Update Function 
