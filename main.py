@@ -700,10 +700,14 @@ def input(key):
         for e in trail_renderers:
             # Disable Trails
             e.enabled = not e.enabled
-    # Conditional 'space' Key
-    elif key == 'space':
+    # Conditional 'f' Key
+    elif key == 'f':
         # Mute Audio
-        a = Audio('space_sound', pitch = random.uniform(0.5, 1), loop = True)
+        a.pause()
+    # Conditional 'o' Key
+    elif key == 'o':
+        # Resume Audio
+        a.resume()
 
 # Call Update Function 
 update()
