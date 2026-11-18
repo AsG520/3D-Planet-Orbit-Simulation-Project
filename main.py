@@ -637,6 +637,63 @@ def update():
     # Relative Pluto
     pluto.planet.rotate(Vec3(0, 1, 0) * 2, relative_to = pluto.planet)
 
+# Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
+# Keyboard Movement 
+    # Conditional 'd' Key
+    if (held_keys['d']):
+        # 0.5 Move Right
+        camera.position += Vec3(0.5, 0, 0)
+    # Conditional 'w' Key
+    elif (held_keys['w']):
+        # 0.5 Move Forward
+        camera.position += Vec3(0, 0, 0.5)
+    # Conditional 's' Key
+    elif (held_keys['s']):
+        # 0.5 Move Backward
+        camera.position += Vec3(0, 0, -0.5)
+    # Conditional 'a' Key
+    elif (held_keys['a']):
+        # 0.5 Move Left
+        camera.position += Vec3(-0.5, 0, 0) 
+
+    # Conditional 'e' Key
+    elif (held_keys['e']):
+        # 0.5 Move Up
+        camera.position += Vec3(0, 0.5, 0)
+    # Conditional 'q' Key
+    elif (held_keys['q']):
+        # 0.5 Move Down
+        camera.position += Vec3(0, -0.5, 0)
+          
+    # Conditional 'r' Key 
+    elif (held_keys['r']):
+        # Origin Position
+        camera.position = Vec3(0, 0, 0)
+        # Origin Rotation
+        camera.rotation = Vec3(0, 0, 0)
+
+    # Conditional 'up arrow' Key 
+    elif (held_keys['up arrow']):
+        # 0.5 Rotate Up
+        camera.rotation += Vec3(0.5, 0, 0)
+    # Conditional 'down arrow' Key 
+    elif (held_keys['down arrow']):
+        # 0.5 Rotate Down
+        camera.rotation += Vec3(-0.5, 0, 0)
+    # Conditional 'left arrow' Key 
+    elif (held_keys['left arrow']):
+        # 0.5 Rotate Left
+        camera.rotation += Vec3(0, 0.5, 0)
+    # Conditional 'right arrow' Key 
+    elif (held_keys['right arrow']):
+        # 0.5 Rotate Right
+        camera.rotation += Vec3(0, -0.5, 0)
+
+    # Conditional 'mouse' Key
+    elif (mouse.moving == True):
+        # Delta Mouse Movement 
+        camera.rotation += Vec3(mouse.delta.y * 0.1, mouse.delta.x * 0.1, 0)
+
 def input(key):
     if key == 'escape':
         for e in trail_renderers:
