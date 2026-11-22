@@ -78,6 +78,10 @@ class Planet:
             scale_z = self.scale_z
         ) 
 
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#Cursor
+# Cursor
+cursor = Entity(parent = camera.ui, model = 'quad', color = color.red, scale = 0.008, rotation_z = 45)
+
 # Reference/Citation of Text: https://www.ursinaengine.org/api_reference.html#Text
 
 # Reference/Citation: https://www.ursinaengine.org/api_reference.html#Audio
@@ -90,6 +94,12 @@ trail_renderers = []
 
 # Time
 t = 0
+
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#Slider
+# Slider
+slider = ThinSlider(max = 100, dynamic = True, position = (-0.25, -0.45))
+# Slider Text
+slider.knob.text_entity.enabled = False
 
 # Moon
 moon = Planet(color.white, 1, 1, 1, (68, 0, 0), load_texture('moon.png'), unlit_shader, rotation = Vec3(0, 0, 6.68))
@@ -296,13 +306,34 @@ uranus_rings = Entity(model = 'quad', texture = load_texture('uranus_rings.png')
 neptune_rings = Entity(model = 'quad', texture = load_texture('neptune_rings.png'), scale = (10, 10), thickness = 10, rotation = Vec3(299, 90, 97.77), double_sided = True)
 
 # Reference/Citation: https://www.ursinaengine.org/api_reference.html#Grid
-# Grid
-grid = Entity(
-    model = Grid(100, 200),
-    scale = 350,
-    position = Vec3(5, -5, 0),
-    rotation = Vec3(90, 0, 0),
-)
+# Cube Grid
+cube_grid = Entity()
+
+# Top Base
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = 0, y = 200, rotation = Vec3(90, 90, 0))
+# Bottom Base
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = 0, y = -200, rotation = Vec3(90, 90, 0))
+
+# Right Base
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = 200, rotation = Vec3(0, 90, 0))
+# Left Base
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = -200, rotation = Vec3(0, 90, 0))
+
+# Back Base
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, z = -200)
+# Front Base
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, z = 200)
+
+# Join Faces
+cube_grid.combine()
+
+# Triangle Connection
+cube_grid.model.mode = 'triangle'
+# Updating Model
+cube_grid.model.generate()
+
+# Cube Grid Opacity
+cube_grid.color = color.rgba(255, 255, 255, 0.20)
 
 # Update Function
 def update():
@@ -696,6 +727,11 @@ def update():
         # Reference/Citation: https://www.ursinaengine.org/api_reference.html#mouse
         # Delta Mouse Movement 
         camera.rotation += Vec3(mouse.delta.y * 0.1, mouse.delta.x * 0.1, 0)
+
+    # Print Camera Rotation Coordinates
+    print(camera.rotation)
+    # Print Camera Position Coordinates
+    print(camera.position)
 
 # Reference/Citation: https://www.ursinaengine.org/api_reference.html#input_handler
 # Input Function
