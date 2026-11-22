@@ -724,7 +724,7 @@ def update():
     elif (mouse.moving == True):
         # Reference/Citation: https://www.ursinaengine.org/api_reference.html#mouse
         # Delta Mouse Movement 
-        camera.rotation += Vec3(mouse.delta.y * 0.1, mouse.delta.x * 0.1, 0)
+        camera.rotation += Vec3(mouse.delta.y * 5, mouse.delta.x * 5, 0)
 
     # Print Camera Rotation Coordinates
     print(camera.rotation)
