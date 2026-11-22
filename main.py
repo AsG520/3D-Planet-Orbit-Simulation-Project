@@ -1,13 +1,11 @@
 # Ursina Import
-from ursina import color, Entity, Ursina, window, EditorCamera, camera, Vec3, held_keys, load_texture, Grid, Text, mouse, Audio
+from ursina import color, Entity, Ursina, window, EditorCamera, camera, Vec3, held_keys, load_texture, Grid, Text, mouse, Audio, ThinSlider
 # Shader Import
 from ursina.shaders import lit_with_shadows_shader, unlit_shader
 # TrailRenderer Import
 from ursina.prefabs.trail_renderer import TrailRenderer
 # Math Import
 import math
-# Random Import 
-import random
 
 # Reference/Citation: https://www.youtube.com/watch?v=w2gu9Ah95l0&list=PLgQYnHnDxgtg-I3m01mGc5wfJwqpT9S3i
 # Ursina Engine
