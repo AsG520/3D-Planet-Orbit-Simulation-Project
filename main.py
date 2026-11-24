@@ -1,5 +1,5 @@
 # Ursina Import
-from ursina import color, Entity, Ursina, window, EditorCamera, camera, Vec3, held_keys, load_texture, Grid, Text, mouse, Audio, ThinSlider
+from ursina import color, Entity, Ursina, window, EditorCamera, camera, Vec3, held_keys, load_texture, Grid, Text, mouse, Audio, ThinSlider, Button
 # Shader Import
 from ursina.shaders import lit_with_shadows_shader, unlit_shader
 # TrailRenderer Import
@@ -332,6 +332,22 @@ cube_grid.model.generate()
 
 # Cube Grid Opacity
 cube_grid.color = color.rgba(255, 255, 255, 0.20)
+
+light_mode = Button(scale = 0.05, color = color.white, x = -0.63, y = -0.45, text = 'L', text_color = color.black)
+dark_mode = Button(scale = 0.05, color = color.gray, x = -0.63, y = -0.38, text = 'D', text_color = color.white)
+
+def light():
+    window.color = color.white
+    cube_grid.color = color.rgba(0, 0, 0, 0.20)
+    window.cog_button.color = color.black
+
+def dark():
+    window.color = color.black
+    cube_grid.color = color.rgba(255, 255, 255, 0.20)
+    window.cog_button.color = color.white
+
+light_mode.on_click = light
+dark_mode.on_click = dark
 
 # Update Function
 def update():
