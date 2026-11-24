@@ -333,20 +333,28 @@ cube_grid.model.generate()
 # Cube Grid Opacity
 cube_grid.color = color.rgba(255, 255, 255, 0.20)
 
+# Light Mode Button
 light_mode = Button(scale = 0.05, color = color.white, x = -0.63, y = -0.45, text = 'L', text_color = color.black)
+# Dark Mode Button
 dark_mode = Button(scale = 0.05, color = color.gray, x = -0.63, y = -0.38, text = 'D', text_color = color.white)
 
+# Light Mode Function
 def light():
+    # White Window Color
     window.color = color.white
+    # Change Cube Grid Color & Opacity
     cube_grid.color = color.rgba(0, 0, 0, 0.20)
-    window.cog_button.color = color.black
 
+# Dark Mode Function
 def dark():
+    # Black Window Color
     window.color = color.black
+    # Change Cube Grid Color & Opacity
     cube_grid.color = color.rgba(255, 255, 255, 0.20)
-    window.cog_button.color = color.white
 
+# Light Mode Function Listener
 light_mode.on_click = light
+# Dark Mode Function Listener
 dark_mode.on_click = dark
 
 # Update Function
