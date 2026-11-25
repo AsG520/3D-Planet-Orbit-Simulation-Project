@@ -73,7 +73,9 @@ class Planet:
             # Scale Y
             scale_y = self.scale_y,
             # Scale Z
-            scale_z = self.scale_z
+            scale_z = self.scale_z,
+            # Collider for interaction
+            collider = 'sphere'
         ) 
 
 # Reference/Citation: https://www.ursinaengine.org/api_reference.html#Cursor
@@ -99,6 +101,8 @@ slider = ThinSlider(max = 100, dynamic = True, position = (-0.25, -0.45))
 # Slider Text
 slider.knob.text_entity.enabled = False
 
+# --- All declared space entities ---
+
 # Moon
 moon = Planet(color.white, 1, 1, 1, (68, 0, 0), load_texture('moon.png'), unlit_shader, rotation = Vec3(0, 0, 6.68))
 moon.getPlanet()
@@ -116,7 +120,7 @@ tr_mercury = TrailRenderer(size = (mercury.planet.scale_x, mercury.planet.scale_
 trail_renderers.append(tr_mercury)
 
 # Mercury Text
-mercury_text = Text(text = "Mercury", position = (0, 1, 0), parent = mercury.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+mercury_text = Text(text = "Mercury", position = (0, 1, 0), parent = mercury.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
     
 # Venus
 venus = Planet(color.white, 4, 4, 4, (40, 0, 0), load_texture('venus.png'), unlit_shader,rotation = Vec3(0, 0, 177.4))
@@ -127,7 +131,7 @@ tr_venus = TrailRenderer(size = (venus.planet.scale_x, venus.planet.scale_y), se
 trail_renderers.append(tr_venus)
 
 # Venus Text
-venus_text = Text(text = "Venus", position = (0, 1, 0), parent = venus.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+venus_text = Text(text = "Venus", position = (0, 1, 0), parent = venus.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
 
 # Earth
 earth = Planet(color.white, 5, 5, 5, (60, 0, 0), load_texture('earth.png'), unlit_shader, rotation = Vec3(0, 0, 23.4))
@@ -138,7 +142,7 @@ tr_earth = TrailRenderer(size = (earth.planet.scale_x, earth.planet.scale_y), se
 trail_renderers.append(tr_earth)
 
 # Earth Text
-earth_text = Text(text = "Earth", position = (0, 1, 0), parent = earth.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+earth_text = Text(text = "Earth", position = (0, 1, 0), parent = earth.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
 
 # Mars
 mars = Planet(color.white, 4.5, 4.5, 4.5, (80, 0, 0), load_texture('mars.png'), unlit_shader, rotation = Vec3(0, 0, 25.19))
@@ -149,7 +153,7 @@ tr_mars = TrailRenderer(size = (mars.planet.scale_x, mars.planet.scale_y), segme
 trail_renderers.append(tr_mars)
 
 # Mars Text
-mars_text = Text(text = "Mars", position = (0, 1, 0), parent = mars.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+mars_text = Text(text = "Mars", position = (0, 1, 0), parent = mars.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
 
 # Phobos (Moon of Mars)
 phobos = Planet(color.white, 1.5, 1.5, 1.5, (84, 0, 0), load_texture('phobos.png'), unlit_shader, rotation = Vec3(0, 0, 0))
@@ -168,7 +172,7 @@ tr_jupiter = TrailRenderer(size = (jupiter.planet.scale_x, jupiter.planet.scale_
 trail_renderers.append(tr_jupiter)
 
 # Jupiter Text
-jupiter_text = Text(text = "Jupiter", position = (0, 1, 0), parent = jupiter.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+jupiter_text = Text(text = "Jupiter", position = (0, 1, 0), parent = jupiter.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
 
 # Io (Moon of Jupiter)
 io = Planet(color.white, 2, 2, 2, (100, 0, 0), load_texture('io.png'), unlit_shader, rotation = Vec3(0, 0, 3.13))
@@ -203,7 +207,7 @@ tr_saturn = TrailRenderer(size = (saturn.planet.scale_x, saturn.planet.scale_y),
 trail_renderers.append(tr_saturn)
 
 # Saturn Text
-saturn_text = Text(text = "Saturn", position = (0, 1, 0), parent = saturn.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+saturn_text = Text(text = "Saturn", position = (0, 1, 0), parent = saturn.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
 
 # Titan (Moon of Saturn)
 titan = Planet(color.white, 2, 2, 2, (130, 0, 0), load_texture('titan.png'), unlit_shader, rotation = Vec3(0, 0, 26.73))
@@ -246,7 +250,7 @@ tr_uranus = TrailRenderer(size = (uranus.planet.scale_x, uranus.planet.scale_y),
 trail_renderers.append(tr_uranus)
 
 # Uranus Text
-uranus_text = Text(text = "Uranus", position = (0, 1, 0), parent = uranus.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+uranus_text = Text(text = "Uranus", position = (0, 1, 0), parent = uranus.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
 
 # Ariel (Moon of Uranus)
 ariel = Planet(color.white, 1.8, 1.8, 1.8, (140, 0, 0), load_texture('ariel.png'), unlit_shader, rotation = Vec3(0, 0, 97.77))
@@ -273,7 +277,7 @@ tr_neptune = TrailRenderer(size = (neptune.planet.scale_x, neptune.planet.scale_
 trail_renderers.append(tr_neptune)
 
 # Neptune Text
-neptune_text = Text(text = "Neptune", position = (0, 1, 0), parent = neptune.planet, origin = (0, 0), color = color.white, scale = 0.3, billboard = True)
+neptune_text = Text(text = "Neptune", position = (0, 1, 0), parent = neptune.planet, origin = (0, 0), color = color.white, scale = 10, billboard = True)
 
 # Triton (Moon of Neptune)
 triton = Planet(color.white, 2.5, 2.5, 2.5, (160, 0, 0), load_texture('triton.png'), unlit_shader, rotation = Vec3(0, 0, 28.32))
@@ -291,6 +295,13 @@ proteus.getPlanet()
 pluto = Planet(color.white, 2, 2, 2, (180, 0, 0), load_texture('pluto.png'), unlit_shader, rotation = Vec3(0, 0, 120))
 pluto.getPlanet()
 
+# Pluto Text
+pluto_text = Text(text = "Pluto", position = (0, 1, 0), parent = pluto.planet, origin = (0, 0), color = color.white, scale = 30, billboard = True)
+
+# Charon (Moon of Pluto)
+charon = Planet(color.white, 1, 1, 1, (180, 0, 0), load_texture('charon.png'),  unlit_shader, rotation = Vec3(0, 0, 0))
+charon.getPlanet()
+
 # Saturn Rings
 saturn_rings = Entity(model = 'quad', texture = load_texture('saturn_rings.png'), scale = (22, 22), thickness = 10, rotation = Vec3(297, 90, 97.77), double_sided = True)
 
@@ -303,24 +314,25 @@ uranus_rings = Entity(model = 'quad', texture = load_texture('uranus_rings.png')
 # Neptune Rings
 neptune_rings = Entity(model = 'quad', texture = load_texture('neptune_rings.png'), scale = (10, 10), thickness = 10, rotation = Vec3(299, 90, 97.77), double_sided = True)
 
-# Reference/Citation: https://www.ursinaengine.org/api_reference.html#Grid
 # Cube Grid
+# Reference/Citation: https://www.ursinaengine.org/api_reference.html#Grid
+
 cube_grid = Entity()
 
 # Top Base
-Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = 0, y = 200, rotation = Vec3(90, 90, 0))
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 450, x = 0, y = 250, rotation = Vec3(90, 90, 0))
 # Bottom Base
-Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = 0, y = -200, rotation = Vec3(90, 90, 0))
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 450, x = 0, y = -250, rotation = Vec3(90, 90, 0))
 
 # Right Base
-Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = 200, rotation = Vec3(0, 90, 0))
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 450, x = 250, rotation = Vec3(0, 90, 0))
 # Left Base
-Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, x = -200, rotation = Vec3(0, 90, 0))
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 450, x = -250, rotation = Vec3(0, 90, 0))
 
 # Back Base
-Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, z = -200)
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 450, z = -250)
 # Front Base
-Entity(parent = cube_grid, model = Grid(20, 20), scale = 350, z = 200)
+Entity(parent = cube_grid, model = Grid(20, 20), scale = 450, z = 250)
 
 # Join Faces
 cube_grid.combine()
@@ -363,7 +375,7 @@ def update():
     global t
     # Increment Time
     t += 0.01
-
+    
     # Relative Sun
     sun.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = sun.planet)
     
@@ -398,7 +410,7 @@ def update():
     neptune_rings.z = neptune.planet.z
         
     # Rotation Radius Mercury
-    radius_mercury = 20
+    radius_mercury = 25
     # Rotate Mercury X
     mercury.planet.x = math.cos(t / 0.24) * radius_mercury
     # Rotate Mercury Z
@@ -407,7 +419,7 @@ def update():
     mercury.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = mercury.planet)
     
     # Rotation Radius Venus
-    radius_venus = 40
+    radius_venus = 45
     # Rotate Venus X
     venus.planet.x = math.cos(t / 0.62) * radius_venus
     # Rotate Venus Z
@@ -416,7 +428,7 @@ def update():
     venus.planet.rotate(Vec3(0, 1, 0) * 2, relative_to = venus.planet)
     
     # Rotation Radius Earth 
-    radius_earth = 60
+    radius_earth = 65
     # Rotate Venus X
     earth.planet.x = math.cos(t) * radius_earth
     # Rotate Venus Z
@@ -425,7 +437,7 @@ def update():
     earth.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = earth.planet)
       
     # Rotation Radius Mars
-    radius_mars = 80
+    radius_mars = 85
     # Rotate Mars X
     mars.planet.x = math.cos(t / 1.88) * radius_mars
     # Rotate Mars Z
@@ -434,7 +446,7 @@ def update():
     mars.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = mars.planet)
     
      # Rotation Radius Phobos
-    radius_phobos = 4
+    radius_phobos = 5
     # Rotate Phobos X
     phobos.planet.x = math.cos(t / 0.087) * radius_phobos + mars.planet.x
     # Rotate Phobos Z
@@ -452,7 +464,7 @@ def update():
     deimos.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = deimos.planet)
     
     # Rotation Radius Jupiter
-    radius_jupiter = 100
+    radius_jupiter = 110
     # Rotate Jupiter X
     jupiter.planet.x = math.cos(t / 11.86) * radius_jupiter
     # Rotate Jupiter Z
@@ -461,7 +473,7 @@ def update():
     jupiter.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = jupiter.planet)
     
     # Rotation Radius Amalthea
-    radius_amalthea = 4.5
+    radius_amalthea = 7
     # Rotate Amalthea X
     amalthea.planet.x = math.cos(t / 0.498) * radius_amalthea + jupiter.planet.x
     # Rotate Amalthea Z
@@ -470,7 +482,7 @@ def update():
     amalthea.planet.rotate(Vec3(0, 1, 0) * -2, relative_to=jupiter.planet)
 
     # Rotation Radius Io
-    radius_io = 6
+    radius_io = 10
     # Rotate Io X
     io.planet.x = math.cos(t / 1.769) * radius_io + jupiter.planet.x
     # Rotate Io Z
@@ -479,7 +491,7 @@ def update():
     io.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = jupiter.planet)
 
     # Rotation Radius Europa
-    radius_europa = 8
+    radius_europa = 14
     # Rotate Europa X
     europa.planet.x = math.cos(t / 3.551) * radius_europa + jupiter.planet.x
     # Rotate Europa Z
@@ -488,7 +500,7 @@ def update():
     europa.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = jupiter.planet)
 
     # Rotation Radius Ganymede
-    radius_ganymede = 11
+    radius_ganymede = 18
     # Rotate Ganymede X
     ganymede.planet.x = math.cos(t / 7.155) * radius_ganymede + jupiter.planet.x
     # Rotate Ganymede Z
@@ -497,7 +509,7 @@ def update():
     ganymede.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = jupiter.planet)
 
     # Rotation Radius Callisto
-    radius_callisto = 12
+    radius_callisto = 23
     # Rotate Callisto X
     callisto.planet.x = math.cos(t / 16.689) * radius_callisto + jupiter.planet.x
     # Rotate Callisto Z
@@ -515,7 +527,7 @@ def update():
     himalia.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = jupiter.planet)
 
     # Rotation Radius Saturn
-    radius_saturn = 120
+    radius_saturn = 135
     # Rotate Saturn X
     saturn.planet.x = math.cos(t / 29.46) * radius_saturn
     # Rotate Saturn Z
@@ -531,7 +543,7 @@ def update():
     saturn_rings.z = saturn.planet.z
     
     # Rotation Radius Mimas
-    radius_mimas = 4
+    radius_mimas = 8
     # Rotate Mimas X
     mimas.planet.x = math.cos(t / 0.94) * radius_mimas + saturn.planet.x
     # Rotate Mimas Z
@@ -540,7 +552,7 @@ def update():
     mimas.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Enceladus
-    radius_enceladus = 4.5
+    radius_enceladus = 11
     # Rotate Enceladus X
     enceladus.planet.x = math.cos(t / 1.37) * radius_enceladus + saturn.planet.x
     # Rotate Enceladus Z
@@ -549,7 +561,7 @@ def update():
     enceladus.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Tethys
-    radius_tethys = 5.5
+    radius_tethys = 14
     # Rotate Tethys X
     tethys.planet.x = math.cos(t / 1.89) * radius_tethys + saturn.planet.x
     # Rotate Tethys Z
@@ -558,7 +570,7 @@ def update():
     tethys.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Dione
-    radius_dione = 6.5
+    radius_dione = 17
     # Rotate Dione X
     dione.planet.x = math.cos(t / 2.74) * radius_dione + saturn.planet.x
     # Rotate Dione Z
@@ -567,7 +579,7 @@ def update():
     dione.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Rhea
-    radius_rhea = 9
+    radius_rhea = 21
     # Rotate Rhea X
     rhea.planet.x = math.cos(t / 4.52) * radius_rhea + saturn.planet.x
     # Rotate Rhea Z
@@ -576,7 +588,7 @@ def update():
     rhea.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Titan
-    radius_titan = 10
+    radius_titan = 26
     # Rotate Titan X
     titan.planet.x = math.cos(t / 15.95) * radius_titan + saturn.planet.x
     # Rotate Titan Z
@@ -585,7 +597,7 @@ def update():
     titan.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Hyperion
-    radius_hyperion = 12.03
+    radius_hyperion = 32
     # Rotate Hyperion X
     hyperion.planet.x = math.cos(t / 21.28) * radius_hyperion + saturn.planet.x
     # Rotate Hyperion Z
@@ -594,7 +606,7 @@ def update():
     hyperion.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Iapetus
-    radius_iapetus = 28.95
+    radius_iapetus = 40
     # Rotate Iapetus X
     iapetus.planet.x = math.cos(t / 79.33) * radius_iapetus + saturn.planet.x
     # Rotate Iapetus Z
@@ -603,7 +615,7 @@ def update():
     iapetus.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = saturn.planet)
 
     # Rotation Radius Uranus
-    radius_uranus = 140
+    radius_uranus = 160
     # Rotate Uranus X
     uranus.planet.x = math.cos(t / 84.01) * radius_uranus
     # Rotate Uranus Z
@@ -612,7 +624,7 @@ def update():
     uranus.planet.rotate(Vec3(0, 1, 0) * 2, relative_to = uranus.planet)
     
     # Rotation Radius Ariel
-    radius_ariel = 6
+    radius_ariel = 8
     # Rotate Ariel X
     ariel.planet.x = math.cos(t / 2.520379) * radius_ariel + uranus.planet.x
     # Rotate Ariel Z
@@ -621,7 +633,7 @@ def update():
     ariel.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = uranus.planet)
 
     # Rotation Radius Umbriel
-    radius_umbriel = 8
+    radius_umbriel = 12
     # Rotate Umbriel X
     umbriel.planet.x = math.cos(t / 4.144176) * radius_umbriel + uranus.planet.x
     # Rotate Umbriel Z
@@ -630,7 +642,7 @@ def update():
     umbriel.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = uranus.planet)
 
     # Rotation Radius Titania
-    radius_titania = 11
+    radius_titania = 17
     # Rotate Titania X
     titania.planet.x = math.cos(t / 8.705867) * radius_titania + uranus.planet.x
     # Rotate Titania Z
@@ -639,7 +651,7 @@ def update():
     titania.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = uranus.planet)
 
     # Rotation Radius Oberon
-    radius_oberon = 14.5
+    radius_oberon = 22
     # Rotate Oberon X
     oberon.planet.x = math.cos(t / 13.463234) * radius_oberon + uranus.planet.x
     # Rotate Oberon Z
@@ -648,7 +660,7 @@ def update():
     oberon.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = uranus.planet)
     
     # Rotation Radius Neptune
-    radius_neptune = 150
+    radius_neptune = 185
     # Rotate Neptune X
     neptune.planet.x = math.cos(t / 164.8) * radius_neptune
     # Rotate Neptune Z
@@ -657,7 +669,7 @@ def update():
     neptune.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = neptune.planet)
     
     # Rotation Radius Proteus
-    radius_proteus = 5
+    radius_proteus = 8
     # Rotate Proteus X
     proteus.planet.x = math.cos(t / 1.122315) * radius_proteus + neptune.planet.x
     # Rotate Proteus Z
@@ -666,7 +678,7 @@ def update():
     proteus.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = neptune.planet)
 
     # Rotation Radius Triton
-    radius_triton = 9
+    radius_triton = 14
     # Rotate Triton X
     triton.planet.x = math.cos(t / -5.876854) * radius_triton + neptune.planet.x
     # Rotate Triton Z
@@ -684,7 +696,7 @@ def update():
     nereid.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = neptune.planet)
     
     # Rotation Radius Pluto
-    radius_pluto = 180
+    radius_pluto = 210
     # Rotate Pluto X
     pluto.planet.x = math.cos(t / 248.0) * radius_pluto
     # Rotate Pluto Z
@@ -692,6 +704,15 @@ def update():
     # Relative Pluto
     pluto.planet.rotate(Vec3(0, 1, 0) * 2, relative_to = pluto.planet)
 
+ # Rotation Radius Charon
+    radius_charon = 5
+    # Rotate Charon X
+    charon.planet.x = math.cos(t / 6.387) * radius_charon + pluto.planet.x
+    # Rotate Charon Z
+    charon.planet.z = math.sin(t / 6.387) * radius_charon + pluto.planet.z
+    # Relative Charon
+    charon.planet.rotate(Vec3(0, 1, 0) * -2, relative_to = pluto.planet)
+    
 # Reference/Citation: https://stackoverflow.com/questions/68065745/left-click-detection-with-ursina, https://www.ursinaengine.org/faq.html  
 # Keyboard Movement 
     # Conditional 'd' Key
@@ -751,9 +772,9 @@ def update():
         camera.rotation += Vec3(mouse.delta.y * 5, mouse.delta.x * 5, 0)
 
     # Print Camera Rotation Coordinates
-    print(camera.rotation)
+    # print(camera.rotation)
     # Print Camera Position Coordinates
-    print(camera.position)
+    # print(camera.position)
 
 # Reference/Citation: https://www.ursinaengine.org/api_reference.html#input_handler
 # Input Function
